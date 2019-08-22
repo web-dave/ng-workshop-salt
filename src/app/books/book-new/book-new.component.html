@@ -1,0 +1,26 @@
+<h3>Create a Book</h3>
+<form [formGroup]="form" (ngSubmit)="save()">
+  <label for="title">Title:</label>
+  <div
+    [hidden]="
+      !form.get('title').hasError('required') || form.get('title').pristine
+    "
+  >
+    Title is required!
+  </div>
+  <input type="text" formControlName="title" />
+  <br />
+
+  <label for="abstract">Abstract:</label>
+  <div
+    [hidden]="
+      !form.get('abstract').hasError('required') ||
+      form.get('abstract').pristine
+    "
+  >
+    Abstract is required!
+  </div>
+
+  <textarea formControlName="abstract"></textarea>
+  <button type="submit" [disabled]="!form.valid">Save</button>
+</form>

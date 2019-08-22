@@ -1,0 +1,7 @@
+<p>book-detail works!</p>
+<div *ngIf="book">
+  <h3>{{ book.title }}</h3>
+  <p>{{ book.abstract }}</p>
+</div>
+<button [routerLink]="['..']">X</button>
+<button [routerLink]="['edit']">Edit</button>
