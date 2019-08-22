@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BookDataService } from '../book-data.service';
 import { IBook } from '../ibook';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'salt-book-detail',
@@ -9,7 +10,7 @@ import { IBook } from '../ibook';
   styleUrls: ['./book-detail.component.scss']
 })
 export class BookDetailComponent implements OnInit {
-  book: IBook;
+  book$: Observable<IBook>;
   constructor(
     private route: ActivatedRoute,
     private service: BookDataService
@@ -18,6 +19,6 @@ export class BookDetailComponent implements OnInit {
   ngOnInit() {
     const params = this.route.snapshot.params;
     // tslint:disable-next-line:no-string-literal
-    this.service.getBook(params['isbn']).subscribe(b => (this.book = b));
+    this.book$ = this.service.getBook(params['isbn']);
   }
 }

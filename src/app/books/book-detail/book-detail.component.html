@@ -1,5 +1,5 @@
 <p>book-detail works!</p>
-<div *ngIf="book">
+<div *ngIf="book$ | async as book">
   <h3>{{ book.title }}</h3>
   <p>{{ book.abstract }}</p>
 </div>

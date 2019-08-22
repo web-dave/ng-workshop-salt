@@ -1,7 +1,7 @@
 <button [routerLink]="['new']">NEW</button>
 <table>
-  <tr *ngFor="let book of books">
-    <td>{{ book.title }}</td>
+  <tr *ngFor="let book of books$ | async">
+    <td>{{ book.title | hurz }}</td>
     <td>
       <a [routerLink]="[book.isbn]">{{ book.isbn }}</a>
     </td>
